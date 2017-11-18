@@ -1,0 +1,39 @@
+ol.breadcrumb
+  li.active 
+    = link_to '取送人员', categories_path
+  li
+    = @category.name
+
+.clear
+br
+
+table.table.table-striped.no-border
+  tr
+    td width='25%' Logo
+    td width='25%' = image_tag qiniu_url(@category.logo), size: '150x150'
+    td width='25%' Is del
+    td width='25%' 
+      - if @category.is_del
+        span.label.label-primary 是
+      - else
+        span.label.label-default 否
+
+
+
+.panel.panel-default
+  .panel-heading#service_categories
+    | 商品
+  .panel-body
+    table.table.table-striped
+      thead
+        tr
+          th width='25%' Name
+          th width='10%' Logo
+          th width='10%' is_del
+          th width='5%' 
+          th width='5%' 
+      tbody
+        = render @products
+    = will_paginate @products, renderer: BootstrapPagination::Rails
+  .panel-footer
+    = link_to '新建商品', new_category_product_path(@category), class: 'btn btn-info btn-sm'

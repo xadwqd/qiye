@@ -1,0 +1,19 @@
+h1 Listing couriers
+
+table.table.table-striped
+  thead
+    tr
+      th 登录账号
+      th
+      th
+      th
+
+  tbody
+    - @couriers.each do |courier|
+      tr
+        td = courier.email
+        td = link_to 'Show', courier
+        td = link_to 'Edit', edit_courier_path(courier)
+        td = link_to 'Destroy', courier, data: { confirm: 'Are you sure?' }, method: :delete
+
+= will_paginate @couriers, renderer: BootstrapPagination::Rails
