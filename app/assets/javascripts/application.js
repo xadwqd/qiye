@@ -12,7 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
 //= require select2-full
 //= require bootstrap
+//= require bootstrap-editable
+//= require bootstrap-editable-rails
 //= require_tree .

@@ -1,12 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :configure_permitted_parameters, if: :devise_controller?
-
-  def configure_permitted_parameters
-    added_attrs = [:city_id]
-    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
-    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
-  end
+  before_action :authenticate_worker!
 
   def after_sign_in_path_for(resource)
     if current_worker.has_role?(:admin)
@@ -14,14 +8,13 @@ class ApplicationController < ActionController::Base
     elsif current_worker.has_role?(:yunying)
       categories_path
     elsif current_worker.has_role?(:fenchengshi)
-        stations_path
+      stations_path
     end
   end
 
   def after_sign_out_path_for(resource)
     new_worker_session_path
   end
-
 
   def current_ability
     @current_ability ||= ::Ability.new(current_worker)

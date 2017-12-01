@@ -11,13 +11,21 @@ Rails.application.routes.draw do
 
   resources :categories do 
     resources :products
+    member do 
+      get :prices
+      post :init_prices
+    end
   end
 
-  resources :stations do
+  resources :prices
+
+  resources :price_rules
+
+  resources :stations do 
   end
 
-  resources :addresses do
-    collection do
+  resources :addresses do 
+    collection do 
       get :suggestion
     end
   end
@@ -25,4 +33,8 @@ Rails.application.routes.draw do
   resources :cities
 
   resources :couriers
+
+  resources :messages, only: [:index]
+
+  mount ActionCable.server => '/cable' 
 end

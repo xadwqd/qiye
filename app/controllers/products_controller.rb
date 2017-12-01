@@ -93,6 +93,6 @@ class ProductsController < ApplicationController
   end
 
   def generate_filename
-    "category-#{Time.now.to_i * 1000 + rand(1000)}"
+    "product-#{Time.now.to_i * 1000 + rand(1000)}"
   end
 end

@@ -1,4 +1,4 @@
 class CitiesWorker < ApplicationRecord
-	belongs_to :city
-	belongs_to :worker
-end 
+  belongs_to :city
+  belongs_to :worker
+end

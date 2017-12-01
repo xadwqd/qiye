@@ -12,11 +12,14 @@ class Ability
       can :manage, Category
       can :manage, Product
       can :manage, City
+      can :manage, Price
     end 
 
     if worker.has_role?(:fenchengshi)
       can :manage, Station
       can :manage, Courier
+      can :change_current_city, Worker
+      can :manage, PriceRule
     end
   end
 end

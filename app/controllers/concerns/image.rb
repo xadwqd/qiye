@@ -1,6 +1,6 @@
 class Image
   def self.upload(filePath, filename)
-    bucket = 'course'
+    bucket = 'xiyi'
 
     key = filename
 

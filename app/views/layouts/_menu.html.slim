@@ -19,15 +19,9 @@
               - if can?(:manage, City)
                 li class="#{is_active?('cities', params[:controller])}"
                   = link_to "城市", cities_path
-          li.dropdown
-            = link_to "系统管理 <b class='caret'></b>".html_safe, '#', :class => 'dropdown-toggle', data: {toggle: 'dropdown'}
-            ul.dropdown-menu
-              - if can?(:manage, Worker)
-                li class="#{is_active?('workers', params[:controller])}"
-                  = link_to "人员", workers_path
-              - if can?(:manage, Role)
-                li class="#{is_active?('roles', params[:controller])}"
-                  = link_to "角色", roles_path
+              - if can?(:manage, Price)
+                li class="#{is_active?('prices', params[:controller])}"
+                  = link_to "价格管理", prices_path
           li.dropdown
             = link_to "分城市管理 <b class='caret'></b>".html_safe, '#', :class => 'dropdown-toggle', data: {toggle: 'dropdown'}
             ul.dropdown-menu
@@ -37,6 +31,18 @@
               - if can?(:manage, Courier)
                 li class="#{is_active?('couriers', params[:controller])}"
                   = link_to "取送人员", couriers_path
+              - if can?(:manage, PriceRule)
+                li class="#{is_active?('price_rules', params[:controller])}"
+                  = link_to "价格管理", price_rules_path
+          li.dropdown
+            = link_to "系统管理 <b class='caret'></b>".html_safe, '#', :class => 'dropdown-toggle', data: {toggle: 'dropdown'}
+            ul.dropdown-menu
+              - if can?(:manage, Worker)
+                li class="#{is_active?('workers', params[:controller])}"
+                  = link_to "人员", workers_path
+              - if can?(:manage, Role)
+                li class="#{is_active?('roles', params[:controller])}"
+                  = link_to "角色", roles_path
 
         ul.nav.navbar-nav.ieCss.pull-right role="presentation"
           .dropdown
@@ -45,7 +51,6 @@
             ul.dropdown-menu role='menu' aria-labelledby="dropdownMenu1"
               li role="presentation"
                 = link_to "退出登陆", destroy_worker_session_path, method: :delete
-
         - if current_city
           ul.nav.navbar-nav.ieCss.pull-right role="presentation"
             .dropdown

@@ -1,0 +1,21 @@
+- User.all.each do |user|
+  .panel.panel-default
+    .panel-heading
+      = "#{user.id}聊天记录"
+    .panel-body
+      div id="messages_#{user.id}"    
+    .panel-footer
+      = text_field_tag :body, '', id: "chat-speak-#{user.id}", class: "chat-speak", user_id: "#{user.id}"
+
+javascript:
+  $(document).on('keypress', '.chat-speak', function(e){    
+    if(e.keyCode == 13){
+      var msg = $(e.target).val()
+      var user_id = $(e.target).attr('user_id')
+      $('#messages_' + user_id).append("<p class='text-right bg-info'>" + msg + '</p>')
+
+      App.kefu.speak(msg, user_id)
+      $(e.target).val('')
+      e.preventDefault()
+    }
+  })

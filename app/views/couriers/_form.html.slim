@@ -2,7 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.association :stations, as: :check_boxes, include_blank: false
+    = f.association :stations, as: :check_boxes, include_blank: false, collection: current_city.stations
 
   .form-actions
     = f.button :submit

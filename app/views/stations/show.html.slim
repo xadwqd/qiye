@@ -26,20 +26,20 @@ br
             td width='35%' = @station.address.comment
 
 .row
- .col-md-12
-   .panel.panel-default
-     .panel-heading#operations
-       | 关联取送员
-     .panel-body
-       table.table.table-striped
-         thead
-           tr
-             th width='15%' 名字
-         tbody
-           - @station.couriers.each do |courier|
-             tr
-               td 
-                 = link_to courier.email, courier
+  .col-md-12
+    .panel.panel-default
+      .panel-heading#operations
+        | 关联取送员
+      .panel-body
+        table.table.table-striped
+          thead
+            tr
+              th width='15%' 名字
+          tbody
+            - @station.couriers.each do |courier|
+              tr
+                td 
+                  = link_to courier.email, courier
 
 = link_to 'Edit', edit_station_path(@station)
 '|
